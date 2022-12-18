@@ -1,0 +1,25 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "TrainTicketsServer.Protos";
+
+package trains;
+
+service ChangePassenger {
+  rpc ChangePassenger (ChangePassengerRequest) returns (ChangePassengerReply);
+}
+
+message ChangePassengerRequest {
+	string token = 1;
+	int32 ticketNumber = 2;
+	string surname = 3;
+	string firstname = 4;
+	string thirdname = 5;
+}
+
+
+message ChangePassengerReply {
+	bool servicePaid = 1;
+	bool passengerChanged = 2;
+}

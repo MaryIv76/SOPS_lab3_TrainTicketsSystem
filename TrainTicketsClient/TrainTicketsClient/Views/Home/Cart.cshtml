@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TrainTicketsClient.Models.Ticket>
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div class="container">
+    <h5 class="label-cart">My tickets</h5>
+
+    @if (ViewBag.Message != "")
+    {
+        <div class="input-error">@ViewBag.Message</div>
+    }
+
+    <div class="cart-info">
+        <table class="table">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <hr />
+                        <div class="tickets">
+                            <div class="ticket-item-info">
+                                <div class="ticketNumber">#@item.ticketNumber</div>
+                                <div class="ticket-item">
+                                    <div class="ticket-item__left">
+                                        <div class="passenger">Passenger:</div>
+                                        <div>From:</div>
+                                        <div>To:</div>
+                                        <div>Date:</div>
+                                        <div>Departure Time:</div>
+                                        <div>Arrival Time:</div>
+                                        <div>Seat Number:</div>
+                                        <div>Price:</div>
+                                    </div>
+
+                                    <div class="ticket-item__right">
+                                        <div class="passenger">@item.surname @item.firstname @item.thirdname</div>
+                                        <div>@item.from</div>
+                                        <div>@item.to</div>
+                                        <div>@item.date</div>
+                                        <div>@item.departureTime</div>
+                                        <div>@item.arrivalTime</div>
+                                        <div>@item.seatNumber</div>
+                                        <div>@item.price</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <div class="button-delete">
+                                    <a href="@Url.Action("CancelTicket", "Home", new {ticketNumber=item.ticketNumber})" class="btn-center btn-href btn-choose-seat">Delete Ticket</a>
+                                </div>
+                                <div class="button-update">
+                                    <a href="#" class="btn-update btn-center btn-href btn-choose-seat">Update Passenger Info</a>
+                                </div>
+                            </div>
+                            <div class="update-section hidden">
+                                <div>Update Passenger Info</div>
+                                <form method="post">
+                                    <input type="hidden" name="ticketNumber" value="@item.ticketNumber" />
+                                    <div class="enter-data">
+                                        <div class="enter-data__top enter-data__top__cart">
+                                            <div class="label-surname">Surname:</div>
+                                        </div>
+                                        <div class="enter-data__bottom">
+                                            <input class="input-surname" type="text" name="passengerSurname" id="surname" /><br />
+                                        </div>
+                                    </div>
+                                    <div class="enter-data">
+                                        <div class="enter-data__top enter-data__top__cart">
+                                            <div class="label-firstName">First Name:</div>
+                                        </div>
+                                        <div class="enter-data__bottom">
+                                            <input class="input-firstName" type="text" name="passengerFirstName" id="firstName" /><br />
+                                        </div>
+                                    </div>
+                                    <div class="enter-data">
+                                        <div class="enter-data__top enter-data__top__cart">
+                                            <div class="label-thirdName">Third Name:</div>
+                                        </div>
+                                        <div class="enter-data__bottom">
+                                            <input class="input-thirdName" type="text" name="passengerThirdName" id="thirdName" /><br />
+                                        </div>
+                                    </div>
+                                    <input class="btn-update-passenger-info" type="submit" value="UPDATE" />
+                                </form>
+                            </div>
+                        </div>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

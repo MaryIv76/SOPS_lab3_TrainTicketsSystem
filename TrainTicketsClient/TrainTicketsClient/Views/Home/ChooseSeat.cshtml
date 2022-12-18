@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TrainTicketsClient.Models.Seat>
+@{
+    ViewData["Title"] = "Choose Seat";
+}
+
+<div class="container">
+
+    <div class="seats">
+        <h5 class="label-seats">Available seats</h5>
+
+        <div class="seats-info">
+            @if (ViewBag.Message != "")
+            {
+                <div class="input-error">@ViewBag.Message</div>
+            }
+            else
+            {
+                <table class="table">
+                    <tr>
+                        <th>Seat Number</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Buy</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.seatNumber</td>
+                            <td>@item.type</td>
+                            <td>@item.price</td>
+                            <td>
+                                <a href="@Url.Action("BuyTicket", "Home", new {id=item.id, seatNumber = item.seatNumber, type=item.type, price=item.price})" class="btn-href btn-buy-ticket">Buy</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</div>

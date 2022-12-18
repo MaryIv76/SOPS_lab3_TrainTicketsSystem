@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TrainTicketsClient.Models.RouteClass>
+@{
+    ViewData["Title"] = "Trains";
+}
+
+<div class="container">
+    <div class="selection-part">
+        <div class="select-label">
+            <h5>Select options to find available trains</h5>
+        </div>
+        <form method="post">
+            <div class="select-option">
+                <div class="select-option__left">
+                    <div class="label-date">Date:</div>
+                </div>
+                <div class="select-option__right">
+                    <input class="input-date" type="date" name="date" />
+                </div>
+            </div>
+            <div class="select-option">
+                <div class="select-option__left">
+                    <div class="label-date">Place of departure:</div>
+                </div>
+                <div class="select-option__right">
+                    <input class="input-date" type="text" name="departure" />
+                </div>
+            </div>
+            <div class="select-option">
+                <div class="select-option__left">
+                    <div class="label-date">Destination:</div>
+                </div>
+                <div class="select-option__right">
+                    <input class="input-date" type="text" name="destination" />
+                </div>
+            </div>
+            <input type="submit" value="Find" />
+        </form>
+        <div class="trains-info">
+            @if (ViewBag.Message != "")
+            {
+                <div class="input-error">@ViewBag.Message</div>
+            }
+            else
+            {
+                <table class="table">
+                    @if (Model != null)
+                    {
+                        <tr>
+                            <th>Route ID</th>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Choose Seat</th>
+                        </tr>
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.routeId</td>
+                                <td>@item.departureTime</td>
+                                <td>@item.arrivalTime</td>
+                                <td>
+                                    <a href="@Url.Action("ChooseSeat", "Home", new {id=item.routeId})" class="btn-href btn-choose-seat">Choose seat</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</div>

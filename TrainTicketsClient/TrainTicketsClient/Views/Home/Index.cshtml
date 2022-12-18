@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="text-center">
+    <h1 class="heading">Welcome to TrainTicketsSystem</h1>
+</div>
+
+<div class="container">
+    <div class="login-form">
+        <form method="post">
+            <div class="enter-data">
+                <div class="enter-data__top">
+                    <div class="label-login">Login:</div>
+                </div>
+                <div class="enter-data__bottom">
+                    <input class="input-data" type="text" name="login" id="login" /><br />
+                </div>
+            </div>
+            <div class="enter-data">
+                <div class="enter-data__top">
+                    <div class="label-password">Password:</div>
+                </div>
+                <div class="enter-data__bottom">
+                    <input class="input-data" type="password" name="password" id="password" /><br />
+                </div>
+            </div>
+            <input class="btn-login" type="submit" value="LOGIN" name="but" />
+        </form>
+    </div>
+    <div class="login-error">
+        @if (ViewBag.Message != "")
+        {
+            <div class="input-error">@ViewBag.Message</div>
+        }
+    </div>
+</div>

@@ -1,0 +1,166 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.heading {
+    font-family: 'Montserrat';
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Login Page */
+.login-form {
+    display: flex;
+    margin: 50px auto 20px;
+    justify-content: center;
+}
+
+.enter-data__top {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.btn-login {
+    display: flex;
+    margin: 30px auto;
+    justify-content: center;
+}
+
+.login-error {
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.input-error {
+    font-size: 18px;
+    color: red;
+}
+
+/* Trains Page */
+.select-label {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.select-option {
+    display: flex;
+    margin: 10px 0;
+}
+
+.select-option__left {
+    width: 20%;
+}
+
+.trains-info {
+    margin-top: 30px;
+}
+
+.btn-href {
+    padding: 5px;
+    border-radius: 2px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Buy Ticket Page */
+.passenger-info {
+    display: flex;
+    margin: 50px auto 20px;
+    justify-content: center;
+}
+
+.buy-ticket {
+    width: 30%;
+    margin-right: 20px;
+}
+
+.btn-buy {
+    display: flex;
+    margin: 20px auto 20px;
+    justify-content: center;
+}
+
+.passenger-error {
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+/* Cart Page */
+.ticketNumber {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ticket-item__left {
+    width: 30%;
+    margin-right: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.ticket-item {
+    display: flex;
+    margin: 10px 0;
+}
+
+.tickets {
+    display: flex;
+}
+
+.ticket-item-info {
+    width: 40%;
+}
+
+.buttons {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.button-delete {
+    width: 30%;
+    margin-right: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.enter-data__top__cart {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.btn-update-passenger-info {
+    margin-top: 5px;   
+}
