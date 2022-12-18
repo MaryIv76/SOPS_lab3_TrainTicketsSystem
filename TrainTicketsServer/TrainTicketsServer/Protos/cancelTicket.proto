@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "TrainTicketsServer.Protos";
+
+package cancelTicket;
+
+service CancelTicket {
+  rpc CancelTicket (CancelTicketRequest) returns (CancelTicketReply);
+}
+
+message CancelTicketRequest {
+	string token = 1;
+	int32 ticketNumber = 2;
+}
+
+message CancelTicketReply {
+	bool servicePaid = 1;
+	bool ticketCanceled = 2;
+}

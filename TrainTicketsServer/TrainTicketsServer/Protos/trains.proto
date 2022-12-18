@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "TrainTicketsServer.Protos";
+
+package trains;
+
+service TrainsInfo {
+  rpc GetAvailableTrains (TrainsRequest) returns (TrainsReply);
+}
+
+message TrainsRequest {
+	string token = 1;
+	string from = 2;
+	string to = 3;
+	google.protobuf.Timestamp date = 4;
+}
+
+message Route {
+	int32 routeId = 1;
+	google.protobuf.Timestamp departureTime = 2;
+	google.protobuf.Timestamp arrivalTime = 3;
+}
+
+message TrainsReply {
+	bool servicePaid = 1;
+	repeated Route routes = 2;
+}
