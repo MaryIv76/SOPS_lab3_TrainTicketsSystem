@@ -2,7 +2,7 @@
 {
     public class Passenger
     {
-        public int seatId { get; set; }
+        public int tripId { get; set; }
         public int seatNumber { get; set; }
         public string type { get; set; }
         public double price { get; set; }

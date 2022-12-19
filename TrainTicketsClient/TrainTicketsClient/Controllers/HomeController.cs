@@ -52,7 +52,7 @@ namespace TrainTicketsClient.Controllers
                 return View();
             }
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:7009");
+            using var channel = GrpcChannel.ForAddress("https://localhost:7146");
             var client = new Login.LoginClient(channel);
 
             LoginRequest loginRequest = HomeControllerHelper.FromLoginDataToLoginRequest(loginData);
@@ -83,7 +83,7 @@ namespace TrainTicketsClient.Controllers
                 return View();
             }
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:7009");
+            using var channel = GrpcChannel.ForAddress("https://localhost:7146");
             var client = new TrainsInfo.TrainsInfoClient(channel);
 
             TrainsRequest trainsRequest = HomeControllerHelper.FromFindTrainToTrainsRequest(findTrain);
@@ -112,7 +112,7 @@ namespace TrainTicketsClient.Controllers
         public IActionResult ChooseSeat(int id, DateTime date)
         {
             String invalidParameterInfo = "";
-            using var channel = GrpcChannel.ForAddress("https://localhost:7009");
+            using var channel = GrpcChannel.ForAddress("https://localhost:7146");
             var client = new SeatsInfo.SeatsInfoClient(channel);
 
             SeatsRequest seatsRequest = HomeControllerHelper.FromIdToSeatsRequest(id, date);
@@ -138,9 +138,9 @@ namespace TrainTicketsClient.Controllers
             return View(seats);
         }
 
-        public IActionResult BuyTicket(int id, int seatNumber, string type, double price)
+        public IActionResult BuyTicket(int tripId, int seatNumber, string type, double price)
         {
-            ViewBag.SeatId = id;
+            ViewBag.TripId = tripId;
             ViewBag.SeatNumber = seatNumber;
             ViewBag.Type = type;
             ViewBag.Price = price;
@@ -153,7 +153,7 @@ namespace TrainTicketsClient.Controllers
             String invalidParameterInfo;
             if (!HomeControllerHelper.CheckPassengerInput(passenger, out invalidParameterInfo))
             {
-                ViewBag.SeatId = passenger.seatId;
+                ViewBag.TripId = passenger.tripId;
                 ViewBag.SeatNumber = passenger.seatNumber;
                 ViewBag.Type = passenger.type;
                 ViewBag.Price = passenger.price;
@@ -161,7 +161,7 @@ namespace TrainTicketsClient.Controllers
                 return View();
             }
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:7009");
+            using var channel = GrpcChannel.ForAddress("https://localhost:7146");
             var client = new BuyTicket.BuyTicketClient(channel);
 
             BuyTicketRequest buyTicketRequest = HomeControllerHelper.FromPassengerToBuyTicketRequest(passenger, userId);
@@ -169,6 +169,10 @@ namespace TrainTicketsClient.Controllers
 
             if (!HomeControllerHelper.CheckBuyTicketReply(reply, out invalidParameterInfo))
             {
+                ViewBag.TripId = passenger.tripId;
+                ViewBag.SeatNumber = passenger.seatNumber;
+                ViewBag.Type = passenger.type;
+                ViewBag.Price = passenger.price;
                 ViewBag.Message = invalidParameterInfo;
                 return View();
             }
@@ -180,7 +184,7 @@ namespace TrainTicketsClient.Controllers
         {
             String invalidParameterInfo = "";
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:7009");
+            using var channel = GrpcChannel.ForAddress("https://localhost:7146");
             var client = new MyTicketsInfo.MyTicketsInfoClient(channel);
 
             GetMyTicketsRequest getMyTicketsRequest = HomeControllerHelper.FromUserIdToGetMyTicketsRequest(userId);
@@ -210,7 +214,7 @@ namespace TrainTicketsClient.Controllers
             invalidDeleteInfo = "";
             String invalidParameterInfo = "";
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:7009");
+            using var channel = GrpcChannel.ForAddress("https://localhost:7146");
             var client = new CancelTicket.CancelTicketClient(channel);
 
             CancelTicketRequest cancelTicketRequest = HomeControllerHelper.FromTicketNumberToCancelTicketRequest(ticketNumber);
@@ -236,7 +240,7 @@ namespace TrainTicketsClient.Controllers
                 return View(myTickets);
             }
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:7009");
+            using var channel = GrpcChannel.ForAddress("https://localhost:7146");
             var client = new ChangePassenger.ChangePassengerClient(channel);
 
             ChangePassengerRequest changePassengerRequest = HomeControllerHelper.FromChangePassengerInfoToChangePassengerRequest(changePassengerInfo);

@@ -141,7 +141,7 @@ namespace TrainTicketsClient.Controllers
             foreach (TrainTicketsServer.Protos.Seat seat in reply.Seats)
             {
                 TrainTicketsClient.Models.Seat curSeat = new TrainTicketsClient.Models.Seat();
-                curSeat.id = seat.Id;
+                curSeat.tripId = seat.TripId;
                 curSeat.seatNumber = seat.SeatNumber;
                 curSeat.type = seat.Type;
                 curSeat.price = seat.Price;
@@ -179,6 +179,7 @@ namespace TrainTicketsClient.Controllers
             buyTicketRequest.Firstname = passenger.firstName;
             buyTicketRequest.Thirdname = passenger.thirdName;
             buyTicketRequest.UserId = userId;
+            buyTicketRequest.TripId = passenger.tripId;
             return buyTicketRequest;
         }
 

@@ -29,7 +29,7 @@
                             <td>@item.type</td>
                             <td>@item.price</td>
                             <td>
-                                <a href="@Url.Action("BuyTicket", "Home", new {id=item.id, seatNumber = item.seatNumber, type=item.type, price=item.price})" class="btn-href btn-buy-ticket">Buy</a>
+                                <a href="@Url.Action("BuyTicket", "Home", new {tripId=item.tripId, seatNumber = item.seatNumber, type=item.type, price=item.price})" class="btn-href btn-buy-ticket">Buy</a>
                             </td>
                         </tr>
                     }
