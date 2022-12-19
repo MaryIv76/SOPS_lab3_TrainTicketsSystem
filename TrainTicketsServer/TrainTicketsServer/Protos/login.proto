@@ -1,0 +1,25 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "TrainTicketsServer.Protos";
+
+package login;
+
+service Login {
+  rpc LoginUser (LoginRequest) returns (LoginReply);
+}
+
+message LoginRequest {
+	string token = 1;
+	string login = 2;
+	string password = 3;
+}
+
+message LoginReply {
+	bool servicePaid = 1;
+	bool loginSuccessful = 2;
+	int32 userId = 3;
+}
+
+
