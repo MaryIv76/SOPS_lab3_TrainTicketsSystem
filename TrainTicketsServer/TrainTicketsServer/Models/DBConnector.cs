@@ -52,10 +52,10 @@ namespace TrainTicketsServer.Models
                 seat => seat.seat_id,
                 (trip, seat) => new SeatInfo
                 {
-                    seat_id = seat.seat_id,
                     seat_number = seat.seat_number,
                     price = trip.price,
-                    seat_type = seat.type
+                    seat_type = seat.type,
+                    trip_id = trip.trip_id
                 }
                 );
 

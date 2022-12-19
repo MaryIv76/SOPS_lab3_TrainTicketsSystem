@@ -31,10 +31,10 @@ namespace TrainTicketsServer.Services
             foreach (var seatInfo in availableSeats)
             {
                 TrainTicketsServer.Protos.Seat seat = new TrainTicketsServer.Protos.Seat();
-                seat.Id = seatInfo.seat_id;
                 seat.SeatNumber = seatInfo.seat_number;
                 seat.Price = seatInfo.price;
                 seat.Type = seatInfo.seat_type;
+                seat.TripId = seatInfo.trip_id;
                 reply.Seats.Add(seat);
             }
             reply.ServicePaid = true;
