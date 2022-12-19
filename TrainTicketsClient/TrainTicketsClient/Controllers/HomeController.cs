@@ -11,30 +11,13 @@ namespace TrainTicketsClient.Controllers
         private readonly ILogger<HomeController> _logger;
 
         static int userId;
-        List<TrainTicketsClient.Models.Ticket> myTickets;
-        String invalidDeleteInfo;
+        static List<TrainTicketsClient.Models.Ticket> myTickets;
+        static String invalidDeleteInfo;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-
             invalidDeleteInfo = "";
-
-            /*myTickets = new List<TrainTicketsClient.Models.Ticket>();
-            TrainTicketsClient.Models.Ticket ticket1 = new TrainTicketsClient.Models.Ticket();
-            ticket1.ticketNumber = 1111;
-            ticket1.surname = "Ivanova";
-            ticket1.firstname = "Mary";
-            ticket1.thirdname = "Dmitrievna";
-            ticket1.from = "Grodno";
-            ticket1.to = "Minsk";
-            ticket1.departureTime = DateTime.Now.ToString("HH:mm");
-            ticket1.arrivalTime = DateTime.Now.ToString("HH:mm");
-            ticket1.date = DateTime.Now.ToString("dd.MM.yyyy");
-            ticket1.seatNumber = 5;
-            ticket1.price = 50.0;
-            myTickets.Add(ticket1);
-            myTickets.Add(ticket1);*/
         }
 
         public IActionResult Index()
@@ -96,15 +79,6 @@ namespace TrainTicketsClient.Controllers
             }
             List<RouteClass> routes = HomeControllerHelper.FromTrainsReplyToRouteClassList(reply, (DateTime)findTrain.date);
 
-            /*List<RouteClass> routes = new List<RouteClass>();
-            RouteClass route1 = new RouteClass();
-            route1.routeId = 1;
-            route1.arrivalTime = DateTime.Now.ToString("HH:mm");
-            route1.departureTime = DateTime.Now.ToString("HH:mm");
-            routes.Add(route1);
-            routes.Add(route1);
-            routes.Add(route1);*/
-
             ViewBag.Message = invalidParameterInfo;
             return View(routes);
         }
@@ -124,15 +98,6 @@ namespace TrainTicketsClient.Controllers
                 return View();
             }
             List<TrainTicketsClient.Models.Seat> seats = HomeControllerHelper.FromSeatsReplyToSeatList(reply);
-
-            /*List<TrainTicketsClient.Models.Seat> seats = new List<TrainTicketsClient.Models.Seat>();
-            TrainTicketsClient.Models.Seat seat1 = new TrainTicketsClient.Models.Seat();
-            seat1.id = 1;
-            seat1.seatNumber = 1;
-            seat1.type = "type";
-            seat1.price = 15.0;
-            seats.Add(seat1);
-            seats.Add(seat1);*/
 
             ViewBag.Message = invalidParameterInfo;
             return View(seats);
