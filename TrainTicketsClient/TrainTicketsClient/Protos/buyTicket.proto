@@ -1,0 +1,31 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "TrainTicketsServer.Protos";
+
+package buyTicket;
+
+service BuyTicket {
+  rpc BuyTicket (BuyTicketRequest) returns (BuyTicketReply);
+}
+
+message BuyTicketRequest {
+	string token = 1;
+	int32 tripId = 2;
+	string surname = 3;
+	string firstname = 4;
+	string thirdname = 5;
+	int32 userId = 6;
+}
+
+/*message Route {
+	int32 routeId = 1;
+	google.protobuf.Timestamp departureTime = 2;
+	google.protobuf.Timestamp arrivalTime = 3;
+}*/
+
+message BuyTicketReply {
+	bool servicePaid = 1;
+	bool ticketPaid = 2;
+}

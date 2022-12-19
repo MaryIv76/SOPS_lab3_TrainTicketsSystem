@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\buyTicket.proto" />
+    <None Remove="Protos\cancelTicket.proto" />
+    <None Remove="Protos\changePassanger.proto" />
+    <None Remove="Protos\login.proto" />
+    <None Remove="Protos\myTickets.proto" />
+    <None Remove="Protos\seats.proto" />
+    <None Remove="Protos\trains.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.12" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.50.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.51.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\buyTicket.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\cancelTicket.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\changePassanger.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\login.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\myTickets.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\seats.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\trains.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Buy Ticket";
+}
+
+<div class="container">
+    <h5 class="label-ticket-info">Buy ticket</h5>
+    <div class="ticket-info">
+        <table class="table">
+            <tr>
+                <th>Seat Number</th>
+                <th>Type</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <th>@ViewBag.SeatNumber</th>
+                <th>@ViewBag.Type</th>
+                <th>@ViewBag.Price</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="passenger-info">
+        <form method="post">
+            <input type="hidden" name="tripId" value="@ViewBag.TripId" />
+            <input type="hidden" name="seatNumber" value="@ViewBag.SeatNumber" />
+            <input type="hidden" name="type" value="@ViewBag.Type" />
+            <input type="hidden" name="price" value="@ViewBag.Price" />
+            <div class="select-option">
+                <div class="select-option__left buy-ticket">
+                    <div class="label-surname">Surname:</div>
+                </div>
+                <div class="select-option__right">
+                    <input class="input-surname" type="text" name="surname" />
+                </div>
+            </div>
+            <div class="select-option">
+                <div class="select-option__left buy-ticket">
+                    <div class="label-firstName">First Name:</div>
+                </div>
+                <div class="select-option__right">
+                    <input class="input-firstName" type="text" name="firstName" />
+                </div>
+            </div>
+            <div class="select-option">
+                <div class="select-option__left buy-ticket">
+                    <div class="label-thirdName">Third Name:</div>
+                </div>
+                <div class="select-option__right">
+                    <input class="input-thirdName" type="text" name="thirdName" />
+                </div>
+            </div>
+            <input type="submit" value="BUY" class="btn-buy" />
+        </form>
+    </div>
+
+    <div class="passenger-error">
+        @if (ViewBag.Message != "")
+        {
+            <div class="input-error">@ViewBag.Message</div>
+        }
+    </div>
+</div>
