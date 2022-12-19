@@ -13,6 +13,7 @@ service SeatsInfo {
 message SeatsRequest {
 	string token = 1;
 	int32 routeId = 2;
+	google.protobuf.Timestamp date = 3;
 }
 
 message Seat {

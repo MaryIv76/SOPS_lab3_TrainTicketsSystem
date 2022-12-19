@@ -58,7 +58,7 @@
                                 <td>@item.departureTime</td>
                                 <td>@item.arrivalTime</td>
                                 <td>
-                                    <a href="@Url.Action("ChooseSeat", "Home", new {id=item.routeId})" class="btn-href btn-choose-seat">Choose seat</a>
+                                    <a href="@Url.Action("ChooseSeat", "Home", new {id=item.routeId, date=item.date})" class="btn-href btn-choose-seat">Choose seat</a>
                                 </td>
                             </tr>
                         }

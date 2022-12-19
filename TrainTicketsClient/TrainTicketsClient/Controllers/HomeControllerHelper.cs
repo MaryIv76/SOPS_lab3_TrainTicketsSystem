@@ -89,7 +89,7 @@ namespace TrainTicketsClient.Controllers
             return trainsRequest;
         }
 
-        public static List<RouteClass> FromTrainsReplyToRouteClassList(TrainsReply reply)
+        public static List<RouteClass> FromTrainsReplyToRouteClassList(TrainsReply reply, DateTime date)
         {
             List<RouteClass> routes = new List<RouteClass>();
             foreach (RouteTrain route in reply.Routes)
@@ -98,6 +98,7 @@ namespace TrainTicketsClient.Controllers
                 curRoute.routeId = route.RouteId;
                 curRoute.arrivalTime = route.ArrivalTime.ToDateTime().ToString("HH:mm");
                 curRoute.departureTime = route.DepartureTime.ToDateTime().ToString("HH:mm");
+                curRoute.date = date;
                 routes.Add(curRoute);
             }
             return routes;
@@ -114,11 +115,12 @@ namespace TrainTicketsClient.Controllers
             return true;
         }
 
-        public static SeatsRequest FromIdToSeatsRequest(int id)
+        public static SeatsRequest FromIdToSeatsRequest(int id, DateTime date)
         {
             SeatsRequest seatsRequest = new SeatsRequest();
             seatsRequest.Token = token;
             seatsRequest.RouteId = id;
+            seatsRequest.Date = Timestamp.FromDateTime(DateTime.SpecifyKind((DateTime)date, DateTimeKind.Utc));
             return seatsRequest;
         }
 

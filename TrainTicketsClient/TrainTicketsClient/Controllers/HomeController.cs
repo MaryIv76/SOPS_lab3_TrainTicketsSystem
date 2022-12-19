@@ -10,7 +10,7 @@ namespace TrainTicketsClient.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        int userId;
+        static int userId;
         List<TrainTicketsClient.Models.Ticket> myTickets;
         String invalidDeleteInfo;
 
@@ -94,7 +94,7 @@ namespace TrainTicketsClient.Controllers
                 ViewBag.Message = invalidParameterInfo;
                 return View();
             }
-            List<RouteClass> routes = HomeControllerHelper.FromTrainsReplyToRouteClassList(reply);
+            List<RouteClass> routes = HomeControllerHelper.FromTrainsReplyToRouteClassList(reply, (DateTime)findTrain.date);
 
             /*List<RouteClass> routes = new List<RouteClass>();
             RouteClass route1 = new RouteClass();
@@ -109,13 +109,13 @@ namespace TrainTicketsClient.Controllers
             return View(routes);
         }
 
-        public IActionResult ChooseSeat(int id)
+        public IActionResult ChooseSeat(int id, DateTime date)
         {
             String invalidParameterInfo = "";
             using var channel = GrpcChannel.ForAddress("https://localhost:7009");
             var client = new SeatsInfo.SeatsInfoClient(channel);
 
-            SeatsRequest seatsRequest = HomeControllerHelper.FromIdToSeatsRequest(id);
+            SeatsRequest seatsRequest = HomeControllerHelper.FromIdToSeatsRequest(id, date);
             var reply = client.GetAvailableSeats(seatsRequest);
 
             if (!HomeControllerHelper.CheckSeatsReply(reply, out invalidParameterInfo))
