@@ -17,7 +17,7 @@ message TrainsRequest {
 	google.protobuf.Timestamp date = 4;
 }
 
-message Route {
+message RouteTrain {
 	int32 routeId = 1;
 	google.protobuf.Timestamp departureTime = 2;
 	google.protobuf.Timestamp arrivalTime = 3;
@@ -25,5 +25,5 @@ message Route {
 
 message TrainsReply {
 	bool servicePaid = 1;
-	repeated Route routes = 2;
+	repeated RouteTrain routes = 2;
 }
