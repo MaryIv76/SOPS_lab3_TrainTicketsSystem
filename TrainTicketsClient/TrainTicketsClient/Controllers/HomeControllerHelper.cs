@@ -171,14 +171,14 @@ namespace TrainTicketsClient.Controllers
             return true;
         }
 
-        public static BuyTicketRequest FromPassengerToBuyTicketRequest(Passenger passenger)
+        public static BuyTicketRequest FromPassengerToBuyTicketRequest(Passenger passenger, int userId)
         {
             BuyTicketRequest buyTicketRequest = new BuyTicketRequest();
             buyTicketRequest.Token = token;
-            buyTicketRequest.SeatId = passenger.seatId;
             buyTicketRequest.Surname = passenger.surname;
             buyTicketRequest.Firstname = passenger.firstName;
             buyTicketRequest.Thirdname = passenger.thirdName;
+            buyTicketRequest.UserId = userId;
             return buyTicketRequest;
         }
 

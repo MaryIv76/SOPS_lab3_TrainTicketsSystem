@@ -12,17 +12,18 @@ service BuyTicket {
 
 message BuyTicketRequest {
 	string token = 1;
-	int32 seatId = 2;
+	int32 tripId = 2;
 	string surname = 3;
 	string firstname = 4;
 	string thirdname = 5;
+	int32 userId = 6;
 }
 
-message Route {
+/*message Route {
 	int32 routeId = 1;
 	google.protobuf.Timestamp departureTime = 2;
 	google.protobuf.Timestamp arrivalTime = 3;
-}
+}*/
 
 message BuyTicketReply {
 	bool servicePaid = 1;

@@ -164,7 +164,7 @@ namespace TrainTicketsClient.Controllers
             using var channel = GrpcChannel.ForAddress("https://localhost:7009");
             var client = new BuyTicket.BuyTicketClient(channel);
 
-            BuyTicketRequest buyTicketRequest = HomeControllerHelper.FromPassengerToBuyTicketRequest(passenger);
+            BuyTicketRequest buyTicketRequest = HomeControllerHelper.FromPassengerToBuyTicketRequest(passenger, userId);
             var reply = client.BuyTicket(buyTicketRequest);
 
             if (!HomeControllerHelper.CheckBuyTicketReply(reply, out invalidParameterInfo))
